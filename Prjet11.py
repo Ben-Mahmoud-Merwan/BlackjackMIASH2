@@ -13,7 +13,7 @@ if val_as == 1:
     else: print("Le joueur a choisi 11")
 
 else:
-    print("ce ,'est pas un as?")
+    print("ce , n'est pas un as")
     if val_as==2:
         carte1 = random.randint(2,10)
         print(carte1)
@@ -39,8 +39,18 @@ carte_joueur = carte1 + carte2
 print(carte_joueur)
 
 
-choixJoueur = int(input("Que veut tu faire: Hit, Stand, Double Down, Surrender"))
+choixJoueur = str(input("Que veut tu faire: Hit, Stand, Double Down, Surrender:"))
 carte3 = 0
+if choixJoueur == "Surrender":
+    print("Le joueur a abandonné, Il a perdu la partie  et recupère la moitié de sa mise")
+
+
+
+
+
+
+
+
 if choixJoueur == "Hit":
     val_as3= random.randint(1,2)
     if val_as3 == 1: 
@@ -55,6 +65,12 @@ if choixJoueur == "Hit":
         if val_as3== 2: 
             carte3 = random.randint(2,10)
             print(carte3)
+    
+carte_joueur += carte3
+print(carte_joueur)
+
+if carte_joueur <= 21: 
+    int(input("Que veut tu faire: Stand, Hit"))
 
 
 
@@ -68,4 +84,9 @@ if choixJoueur == "Hit":
 
 
 
-#test merwan11
+
+
+
+
+
+          

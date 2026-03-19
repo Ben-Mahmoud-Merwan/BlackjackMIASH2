@@ -57,7 +57,7 @@ if choixJoueur == "Hit":
             print(carte3)
 
 
-
+#test g
 
 
 

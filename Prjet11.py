@@ -112,18 +112,18 @@ print("Croupier :", [croupier[0], "??"])  # une cachée
 
 import random
 
-paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4
+paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4 #x4 pour representer les 4 couleurs de cartes
 
-def valeur_main(main):
+def valeur_main(main): # MISE A 0 de la main 
     total = 0
-    as_count = 0
+    as_count = 0 
 
     for carte in main:
         if carte in ["J", "Q", "K"]:
-            total += 10
+            total += 10 #valeur des figures = 10 
         elif carte == "A":
-            total += 11
-            as_count += 1
+            total += 11 #valeur de l'AS = 11
+            as_count += 1 #valeur de l'As = 1
         else:
             total += int(carte)
 
@@ -141,7 +141,7 @@ def blackjack():
     croupier = [tirer(), tirer()]
 
     print("Ta main :", joueur, "=", valeur_main(joueur))
-    print("Carte visible croupier :", croupier[0])
+    print("Carte visible croupier :", croupier[0]). # Une seule carte visibles sur les deux du croupier
 
     # tour joueur
     while valeur_main(joueur) < 21:
@@ -175,3 +175,78 @@ def blackjack():
 
 # lancer le jeu
 blackjack()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import random
+
+# On prépare un paquet de cartes
+paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4 # x4 pour représenter les 4 couleurs
+
+def calculer_score(main):
+    score = 0
+    as_presents = 0
+    for carte in main:
+        if carte in ["J", "Q", "K"]: score += 10
+        elif carte == "A":
+            score += 11
+            as_presents += 1
+        else: score += int(carte)
+    
+    # Si on dépasse 21, l'As vaut 1 au lieu de 11
+    while score > 21 and as_presents > 0:
+        score -= 10
+        as_presents -= 1
+    return score
+
+# -INITIALISATION
+random.shuffle(paquet)
+main_joueur = [paquet.pop(), paquet.pop()] # pop() supprime la cartes du tirage du jeu de cartes pour eviter de la tirer "50 fois d'affilé"
+main_croupier = [paquet.pop(), paquet.pop()]
+
+# -TOUR DU JOUEUR
+while True:
+    score_j = calculer_score(main_joueur)
+    print(f"Votre main : {main_joueur} | Score : {score_j}")
+    
+    if score_j >= 21:
+        break
+        
+    choix = input("Tapez 'h' pour Hit (tirer) ou 's' pour Stand (rester) : ").lower()
+    if choix == 'h':
+        main_joueur.append(paquet.pop())
+    else:
+        break
+
+# - TOUR DU CROUPIER 
+score_j = calculer_score(main_joueur)
+
+if score_j <= 21:
+    print(f"\nMain du croupier : {main_croupier}")
+    while calculer_score(main_croupier) < 17:
+        main_croupier.append(paquet.pop())
+        print(f"Le croupier tire une carte... Nouvelle main : {main_croupier}")
+
+# - VERDICT 
+score_c = calculer_score(main_croupier)
+print(f"\nScore Final - Vous: {score_j} | Croupier: {score_c}")
+
+if score_j > 21:
+    print("Vous avez dépassé 21... Perdu !")
+elif score_c > 21 or score_j > score_c:
+    print("Gagné !")
+elif score_j < score_c:
+    print("Le croupier gagne !")
+else:
+    print("Égalité !")

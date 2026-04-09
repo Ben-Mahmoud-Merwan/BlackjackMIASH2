@@ -62,3 +62,5 @@ elif score_j < score_c:
     print("Le croupier gagne !")
 else:
     print("Égalité !")
+
+    # Fin du jeu

@@ -1,8 +1,7 @@
-#BLACKJACK: 
+#BLACKJACK
 # Guillaume Garnier, Merwan Ben mahmoud-Branchur, Younes Mahmoudi
 
 import random
-
 # On prépare un paquet de cartes
 paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4 # x4 pour représenter les 4 couleurs
 
@@ -22,7 +21,7 @@ def calculer_score(main): #fonction de calcul du score des joueurs.
         as_possede -= 1 #on enleve l'As utilisé 
     return score
 
-# -TIRAGE INITIALE
+# -TIRAGE DE DÉPART
 random.shuffle(paquet) #Shuffle melange le paquet comme au Casino 
 main_joueur = [paquet.pop(), paquet.pop()] # on tire la derniere carte du paquet et comme il est melange pas besoin de tirage aléatoire il l'es deja puis pop() supprime la cartes du tirage du jeu de cartes pour eviter de la tirer "50 fois d'affilé"
 main_croupier = [paquet.pop(), paquet.pop()]#idem 
@@ -50,7 +49,7 @@ if score_j <= 21: # si n'a pas eu 21 directement avec les care de depart il tire
         main_croupier.append(paquet.pop())
         print(f"Le croupier tire une carte... Nouvelle main : {main_croupier}")
 
-# - VERDICT 
+# - ISSUES DE LA PARTIE 
 score_c = calculer_score(main_croupier)
 print(f"\nScore Final - Vous: {score_j} | Croupier: {score_c}")
 

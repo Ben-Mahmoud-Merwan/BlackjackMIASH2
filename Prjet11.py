@@ -45,12 +45,6 @@ if choixJoueur == "Surrender":
     print("Le joueur a abandonné, Il a perdu la partie  et recupère la moitié de sa mise")
 
 
-
-
-
-
-
-
 if choixJoueur == "Hit":
     val_as3= random.randint(1,2)
     if val_as3 == 1: 
@@ -99,97 +93,12 @@ def tirage_blackjack():
     
     return joueur, croupier
 
-
-# exemple
 joueur, croupier = tirage_blackjack()
 print("Joueur :", joueur)
-print("Croupier :", [croupier[0], "??"])  # une cachée
+print("Croupier :", [croupier[0], "??"])  
 
 
 
-
-
-
-import random
-
-paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4 #x4 pour representer les 4 couleurs de cartes
-
-def valeur_main(main): # MISE A 0 de la main 
-    total = 0
-    as_count = 0 
-
-    for carte in main:
-        if carte in ["J", "Q", "K"]:
-            total += 10 #valeur des figures = 10 
-        elif carte == "A":
-            total += 11 #valeur de l'AS = 11
-            as_count += 1 #valeur de l'As = 1
-        else:
-            total += int(carte)
-
-    while total > 21 and as_count:
-        total -= 10
-        as_count -= 1
-
-    return total
-
-def tirer():
-    return random.choice(paquet)
-
-def blackjack():
-    joueur = [tirer(), tirer()]
-    croupier = [tirer(), tirer()]
-
-    print("Ta main :", joueur, "=", valeur_main(joueur))
-    print("Carte visible croupier :", croupier[0]). # Une seule carte visibles sur les deux du croupier
-
-    # tour joueur
-    while valeur_main(joueur) < 21:
-        choix = input("hit ou stand ? ")
-
-        if choix == "hit":
-            joueur.append(tirer())
-            print("Ta main :", joueur, "=", valeur_main(joueur))
-        else:
-            break
-
-    if valeur_main(joueur) > 21:
-        print("Tu brûles, perdu")
-        return
-
-    # tour croupier (tire à 16 reste à 17)
-    while valeur_main(croupier) < 17:
-        croupier.append(tirer())
-
-    print("Main croupier :", croupier, "=", valeur_main(croupier))
-
-    # résultat
-    if valeur_main(croupier) > 21:
-        print("Croupier brûle, gagné")
-    elif valeur_main(joueur) > valeur_main(croupier):
-        print("Gagné")
-    elif valeur_main(joueur) < valeur_main(croupier):
-        print("Perdu")
-    else:
-        print("Égalité")
-
-# lancer le jeu
-blackjack()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import random
 
 # On prépare un paquet de cartes
 paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4 # x4 pour représenter les 4 couleurs

@@ -105,21 +105,21 @@ paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4 
 
 def calculer_score(main):
     score = 0
-    as_presents = 0
+    as_possede = 0
     for carte in main:
         if carte in ["J", "Q", "K"]: score += 10
         elif carte == "A":
             score += 11
-            as_presents += 1
+            as_possede += 1
         else: score += int(carte)
     
     # Si on dépasse 21, l'As vaut 1 au lieu de 11
-    while score > 21 and as_presents > 0:
+    while score > 21 and as_possede > 0:
         score -= 10
-        as_presents -= 1
+        as_possede -= 1
     return score
 
-# -INITIALISATION
+# -TIRAGE INITIALE
 random.shuffle(paquet)
 main_joueur = [paquet.pop(), paquet.pop()] # pop() supprime la cartes du tirage du jeu de cartes pour eviter de la tirer "50 fois d'affilé"
 main_croupier = [paquet.pop(), paquet.pop()]

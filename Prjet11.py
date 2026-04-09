@@ -6,7 +6,7 @@ import random
 # On prépare un paquet de cartes
 paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4 # x4 pour représenter les 4 couleurs
 
-def calculer_score(main):
+def calculer_score(main): #fonction de calcul du score des joueurs.
     score = 0
     as_possede = 0 #As present dans la main 
     for carte in main:
@@ -24,8 +24,8 @@ def calculer_score(main):
 
 # -TIRAGE INITIALE
 random.shuffle(paquet) #Shuffle melange le paquet comme au Casino 
-main_joueur = [paquet.pop(), paquet.pop()] # pop() supprime la cartes du tirage du jeu de cartes pour eviter de la tirer "50 fois d'affilé"
-main_croupier = [paquet.pop(), paquet.pop()]
+main_joueur = [paquet.pop(), paquet.pop()] # on tire la derniere carte du paquet et comme il est melange pas besoin de tirage aléatoire il l'es deja puis pop() supprime la cartes du tirage du jeu de cartes pour eviter de la tirer "50 fois d'affilé"
+main_croupier = [paquet.pop(), paquet.pop()]#idem 
 
 # -TOUR DU JOUEUR
 while True: # boucle infini pour enchainé les tour si on veut 
@@ -54,13 +54,13 @@ if score_j <= 21: # si n'a pas eu 21 directement avec les care de depart il tire
 score_c = calculer_score(main_croupier)
 print(f"\nScore Final - Vous: {score_j} | Croupier: {score_c}")
 
-if score_j > 21:
-    print("Vous avez dépassé 21... Perdu !")
-elif score_c > 21 or score_j > score_c:
+if score_j > 21:# on a depassé 21
+    print("Vous avez dépassé 21... Perdu !") 
+elif score_c > 21 or score_j > score_c:  # le croupier a depassé 21 ou on a un meilleur score que lui donc on gagne 
     print("Gagné !")
-elif score_j < score_c:
+elif score_c <=21 and score_j < score_c: # Le croupier n'a pas depassé 21 et a plus que nous donc il gagne 
     print("Le croupier gagne !")
-else:
+else:# on a le meme score que le croupier donc eglité (18-18, 20-20, ……)
     print("Égalité !")
 
     # Fin du jeu

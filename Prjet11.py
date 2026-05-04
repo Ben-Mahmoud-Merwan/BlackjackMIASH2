@@ -2,6 +2,10 @@
 # Guillaume Garnier, Merwan Ben mahmoud-Branchut, Younes Mahmoudi
 
 import random
+#BLACKJACK
+# Guillaume Garnier, Merwan Ben mahmoud-Branchut, Younes Mahmoudi
+
+import random
 # On prépare un paquet de cartes
 paquet = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4 # x4 pour représenter les 4 couleurs
 
@@ -65,4 +69,4 @@ else:# on a le meme score que le croupier donc eglité (18-18, 20-20, ……)
 
     # Fin du jeu
 
-
+ 

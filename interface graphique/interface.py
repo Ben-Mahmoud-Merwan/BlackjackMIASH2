@@ -110,7 +110,7 @@ def gerer_fin_de_partie():
     score_c = calculer_score(main_croupier)
  
     FONT = ("Helvetica", 90, "bold")
-    if score_j > 21:
+    if score_j > 21: 
         canvas.create_text(cx, cy, text="LOSER",  font=FONT, fill="red")
     elif score_c > 21 or score_j > score_c:
         canvas.create_text(cx, cy, text="WINNER", font=FONT, fill="yellow")

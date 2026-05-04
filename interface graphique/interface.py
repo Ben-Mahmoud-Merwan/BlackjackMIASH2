@@ -2,7 +2,7 @@ import random
 import tkinter as tk
 from PIL import Image, ImageTk
  
-# --- CODE DE BASE ---
+# -CODE DE BASE -
 paquet_base = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] * 4
  
 def calculer_score(main):
@@ -20,26 +20,25 @@ def calculer_score(main):
     return score
  
  
-# --- INTERFACE GRAPHIQUE ---
+# -INTERFACE GRAPHIQUE-
  
 def charger_images():
     global img_cartes, img_bouton_hit, img_bouton_stand, img_bouton_deal, img_dos_carte
  
-    # 1. Boutons bleus ── image 700x210px | chaque bouton = 70x70px
+    # 1. Boutons bleus 
     image_boutons = Image.open("button d'action.png")
     img_bouton_deal  = ImageTk.PhotoImage(image_boutons.crop((  0, 0,  70, 70)))
     img_bouton_hit   = ImageTk.PhotoImage(image_boutons.crop((280, 0, 350, 70)))
     img_bouton_stand = ImageTk.PhotoImage(image_boutons.crop((350, 0, 420, 70)))
  
-    # 2. Cartes ── méthode exacte du code de référence
+    # 2. Cartes 
     image = Image.open("cartes.png")
  
     carte_hauteur = image.height // 53
     TAILLE = (143, 221)
  
     img_dos_carte = ImageTk.PhotoImage(
-        image.crop((0, 0, 110, 170)).resize(TAILLE, Image.Resampling.LANCZOS)
-    )
+        image.crop((0, 0, 110, 170)).resize(TAILLE, Image.Resampling.LANCZOS))
  
     rangs = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
     img_cartes = {}
@@ -47,8 +46,7 @@ def charger_images():
         y1 = i * carte_hauteur + 170
         y2 = y1 + carte_hauteur
         img_cartes[valeur] = ImageTk.PhotoImage(
-            image.crop((0, y1, image.width, y2)).resize(TAILLE, Image.Resampling.LANCZOS)
-        )
+            image.crop((0, y1, image.width, y2)).resize(TAILLE, Image.Resampling.LANCZOS))
  
  
 def actualiser_affichage(fin_partie=False):

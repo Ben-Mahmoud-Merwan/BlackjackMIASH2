@@ -1,5 +1,5 @@
 #BLACKJACK
-# Guillaume Garnier, Merwan Ben mahmoud-Branchur, Younes Mahmoudi
+# Guillaume Garnier, Merwan Ben mahmoud-Branchut, Younes Mahmoudi
 
 import random
 # On prépare un paquet de cartes
@@ -23,6 +23,7 @@ def calculer_score(main): #fonction de calcul du score des joueurs.
 
 # -TIRAGE DE DÉPART
 random.shuffle(paquet) #Shuffle melange le paquet comme au Casino 
+
 main_joueur = [paquet.pop(), paquet.pop()] # on tire la derniere carte du paquet et comme il est melange pas besoin de tirage aléatoire il l'es deja puis pop() supprime la cartes du tirage du jeu de cartes pour eviter de la tirer "50 fois d'affilé"
 main_croupier = [paquet.pop(), paquet.pop()]#idem 
 
@@ -63,3 +64,5 @@ else:# on a le meme score que le croupier donc eglité (18-18, 20-20, ……)
     print("Égalité !")
 
     # Fin du jeu
+
+
